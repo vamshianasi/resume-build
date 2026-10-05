@@ -1,268 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anasi Vamshi | SAP BTP Application Development</title>
-<meta name="description" content="SAP BTP Application Development consultant with 4+ years of experience in cloud-native delivery, application lifecycle management, and solution design.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anasi Vamshi | SAP BTP Application Development</title>
+  <meta name="description" content="SAP BTP Application Development consultant with 4+ years of experience in cloud-native delivery, application lifecycle management, and solution design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-<header class="topbar">
-  <div class="wrap topbar-inner">
-    <a href="#home" class="brand">
-      <span class="brand-mark">AV</span>
-      <span class="brand-text">Anasi&nbsp;Vamshi</span>
-    </a>
-    <nav class="nav" id="nav">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#skills" class="nav-link">Expertise</a>
-      <a href="#experience" class="nav-link">Experience</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-    <a href="#contact" class="btn btn-sm topbar-cta">Hire me</a>
-  </div>
-</header>
-
-<section id="home" class="hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="wrap hero-inner">
-    <img class="avatar" src="photo.svg" alt="Portrait of Anasi Vamshi">
-    <p class="eyebrow"><span class="dot"></span>SAP Certified &middot; BTP &amp; Cloud Native</p>
-    <h1 class="hero-name">Anasi Vamshi</h1>
-    <p class="hero-role">SAP BTP Application Development <span class="sep">/</span> SAP Consultant</p>
-    <p class="hero-sub">Hyderabad, India &mdash; building reliable, maintainable cloud applications on SAP BTP since 2022.</p>
-    <div class="hero-actions">
-      <a href="#experience" class="btn">View experience</a>
-      <a href="resume.html" class="btn btn-ghost">Download resume</a>
+  <header class="topbar" id="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#home" class="brand">
+        <span class="brand-mark">AV</span>
+        <span class="brand-text">Anasi&nbsp;Vamshi</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Expertise</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <a href="#contact" class="btn btn-sm topbar-cta">Hire me</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Toggle navigation">
+        <span></span>
+      </button>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Years experience</span></div>
-      <div class="stat"><span class="stat-num">3</span><span class="stat-label">Enterprise programs</span></div>
-      <div class="stat"><span class="stat-num">SAP</span><span class="stat-label">BTP focused</span></div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid"></div>
+      <div class="hero-glow"></div>
+      <div class="hero-orb hero-orb-1"></div>
+      <div class="hero-orb hero-orb-2"></div>
     </div>
-  </div>
-</section>
+    <div class="wrap hero-inner">
+      <div class="hero-badge">
+        <img class="avatar" src="photo.svg" alt="Portrait of Anasi Vamshi">
+        <span class="hero-badge-ring"></span>
+      </div>
+      <p class="eyebrow reveal"><span class="dot"></span>SAP Certified &middot; BTP &amp; Cloud Native</p>
+      <h1 class="hero-name reveal">Anasi Vamshi</h1>
+      <p class="hero-role reveal">SAP BTP Application Development <span class="sep">/</span> SAP Consultant</p>
+      <p class="hero-sub reveal">Hyderabad, India &mdash; building reliable, maintainable cloud applications on SAP BTP since 2022.</p>
+      <div class="hero-actions reveal">
+        <a href="#experience" class="btn">View experience</a>
+        <a href="resume.html" class="btn btn-ghost">Download resume</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><span class="stat-num">4+</span><span class="stat-label">Years experience</span></div>
+        <div class="stat"><span class="stat-num">SAP</span><span class="stat-label">BTP focused</span></div>
+        <div class="stat"><span class="stat-num">3</span><span class="stat-label">Languages spoken</span></div>
+      </div>
+    </div>
+  </section>
 
-<main id="main">
+  <main id="main">
 
-  <section id="about" class="section">
-    <div class="wrap">
-      <header class="section-head">
-        <p class="section-num">01</p>
-        <h2 class="section-title">Profile</h2>
-      </header>
-      <div class="about-layout">
-        <p class="lead">SAP Consultant with 4 years of experience supporting SAP BTP application development and translating business needs into scalable, maintainable software solutions.</p>
-        <div class="about-body">
-          <p>Skilled in cloud-native delivery, application lifecycle activities, technical troubleshooting, stakeholder collaboration, and team coordination. Focused on reliable applications, structured delivery, and continuous improvement.</p>
-          <p>I work end to end on BTP projects: gathering and clarifying requirements, shaping solution designs with cross-functional teams, building and testing the application, driving deployment readiness, and supporting production issues after release.</p>
+    <section id="about" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-num">01</p>
+          <h2 class="section-title">Profile</h2>
+        </header>
+        <div class="about-layout">
+          <p class="lead reveal">SAP Consultant with 4 years of experience supporting SAP BTP application development and translating business needs into scalable, maintainable software solutions.</p>
+          <div class="about-body">
+            <p class="reveal">Skilled in cloud-native delivery, application lifecycle activities, technical troubleshooting, stakeholder collaboration, and team coordination. Focused on reliable applications, structured delivery, and continuous improvement.</p>
+            <p class="reveal">I work end to end on BTP projects: gathering and clarifying requirements, shaping solution designs with cross-functional teams, building and testing the application, driving deployment readiness, and supporting production issues after release.</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills" class="section section-tinted">
-    <div class="wrap">
-      <header class="section-head">
-        <p class="section-num">02</p>
-        <h2 class="section-title">Expertise</h2>
-      </header>
-      <div class="cards">
-        <article class="card">
-          <h3>SAP BTP &amp; Development</h3>
-          <p>Application development on SAP BTP, working with SAP services and tools to design solutions that stay maintainable as requirements shift.</p>
-          <ul class="tags">
-            <li>Solution design</li><li>SAP services</li><li>Maintainable apps</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Cloud Delivery</h3>
-          <p>Cloud-native development with lifecycle management, deployment processes, and hands-on issue analysis for technical troubleshooting.</p>
-          <ul class="tags">
-            <li>Deployment</li><li>Lifecycle mgmt</li><li>Troubleshooting</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Consulting</h3>
-          <p>Requirements understanding, stakeholder communication, and business-process alignment through to solution delivery.</p>
-          <ul class="tags">
-            <li>Requirements</li><li>Stakeholder mgmt</li><li>Process alignment</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Team Contribution</h3>
-          <p>Process improvement, mentoring, status reporting, and risk and dependency management across delivery teams.</p>
-          <ul class="tags">
-            <li>Mentoring</li><li>Risk mgmt</li><li>Knowledge sharing</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="experience" class="section">
-    <div class="wrap">
-      <header class="section-head">
-        <p class="section-num">03</p>
-        <h2 class="section-title">Experience</h2>
-      </header>
-
-      <div class="timeline">
-
-        <article class="tl-item">
-          <div class="tl-marker"><span class="tl-dot"></span></div>
-          <div class="tl-body">
-            <div class="tl-head">
-              <div>
-                <h3 class="tl-title">Software Development Engineer</h3>
-                <p class="tl-org">Amazon</p>
-              </div>
-              <p class="tl-date">2025 &ndash; Present</p>
+    <section id="skills" class="section section-tinted">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-num">02</p>
+          <h2 class="section-title">Expertise</h2>
+        </header>
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <ul class="bullets">
-              <li>Built and maintained cloud-native applications across design, implementation, and release cycles.</li>
-              <li>Partnered with product and platform teams to deliver scalable features aligned to customer needs.</li>
-              <li>Investigated and resolved application issues, improving reliability and reducing production defects.</li>
-              <li>Contributed to code reviews, sprint planning, and retrospectives, and shared knowledge with teammates.</li>
-            </ul>
+            <h3>SAP BTP &amp; Development</h3>
+            <p>Application development on SAP BTP, working with SAP services and tools to design solutions that stay maintainable as requirements shift.</p>
             <ul class="tags">
-              <li>Cloud native</li><li>Code review</li><li>Agile</li>
+              <li>Solution design</li><li>SAP services</li><li>Maintainable apps</li>
             </ul>
-          </div>
-        </article>
-
-        <article class="tl-item">
-          <div class="tl-marker"><span class="tl-dot"></span></div>
-          <div class="tl-body">
-            <div class="tl-head">
-              <div>
-                <h3 class="tl-title">SAP BTP Consultant</h3>
-                <p class="tl-org">Genpact</p>
-              </div>
-              <p class="tl-date">2022 &ndash; Present</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
             </div>
-            <ul class="bullets">
-              <li>Delivered SAP BTP application development work, translating business requirements into scalable, maintainable solutions.</li>
-              <li>Supported cloud-native application design, deployment activities, and lifecycle management within SAP BTP.</li>
-              <li>Troubleshot application issues and coordinated resolution across functional and technical teams.</li>
-              <li>Partnered with stakeholders to align solution design with business processes and delivery timelines.</li>
-            </ul>
+            <h3>Cloud Delivery</h3>
+            <p>Cloud-native development with lifecycle management, deployment processes, and hands-on issue analysis for technical troubleshooting.</p>
             <ul class="tags">
-              <li>SAP BTP</li><li>Deployment</li><li>Stakeholder mgmt</li>
+              <li>Deployment</li><li>Lifecycle mgmt</li><li>Troubleshooting</li>
             </ul>
-          </div>
-        </article>
-
-        <article class="tl-item">
-          <div class="tl-marker"><span class="tl-dot"></span></div>
-          <div class="tl-body">
-            <div class="tl-head">
-              <div>
-                <h3 class="tl-title">SAP Consultant</h3>
-                <p class="tl-org">Accenture</p>
-              </div>
-              <p class="tl-date">Aug 2022 &ndash; Present</p>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <ul class="bullets">
-              <li>Supported SAP BTP application development, designing solutions aligned to business processes and application needs.</li>
-              <li>Contributed to application lifecycle management and deployment activities in the SAP BTP environment.</li>
-              <li>Led process-improvement efforts, coordinated team decisions, and mentored junior team members.</li>
-              <li>Supported functional and technical testing, defect resolution, and user-acceptance testing before release.</li>
-              <li>Maintained project documentation: requirement notes, solution details, test evidence, and status updates.</li>
-              <li>Provided post-deployment support by investigating production issues and coordinating timely resolution.</li>
-            </ul>
+            <h3>Consulting</h3>
+            <p>Requirements understanding, stakeholder communication, and business-process alignment through to solution delivery.</p>
             <ul class="tags">
-              <li>SAP BTP</li><li>UAT support</li><li>Mentoring</li>
+              <li>Requirements</li><li>Stakeholder mgmt</li><li>Process alignment</li>
             </ul>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="education" class="section section-tinted">
-    <div class="wrap">
-      <header class="section-head">
-        <p class="section-num">04</p>
-        <h2 class="section-title">Education</h2>
-      </header>
-      <div class="edu-list">
-        <article class="edu">
-          <div class="edu-badge">B.Tech</div>
-          <div class="edu-body">
-            <h3>Mechanical Engineering</h3>
-            <p class="edu-org">Jyothishmathi Institute of Technology and Science, JNTUH, Karimnagar</p>
-            <p class="edu-meta">Jun 2015 &ndash; Mar 2022 &nbsp;&middot;&nbsp; 56.30%</p>
-          </div>
-        </article>
-        <article class="edu">
-          <div class="edu-badge">12th</div>
-          <div class="edu-body">
-            <h3>Intermediate</h3>
-            <p class="edu-org">Alphores Junior College, Karimnagar</p>
-            <p class="edu-meta">Jun 2013 &ndash; Apr 2015 &nbsp;&middot;&nbsp; 84.6%</p>
-          </div>
-        </article>
-        <article class="edu">
-          <div class="edu-badge">SSC</div>
-          <div class="edu-body">
-            <h3>Secondary School</h3>
-            <p class="edu-org">Trinity Model Secondary School, Peddapalli</p>
-            <p class="edu-meta">Jun 2012 &ndash; Apr 2013 &nbsp;&middot;&nbsp; 8.3 GPA</p>
-          </div>
-        </article>
-      </div>
-      <p class="footnote">Academic documents: CMM issued 12 Jul 2022 &middot; OD issued 18 Mar 2023</p>
-    </div>
-  </section>
-
-  <section id="contact" class="section section-dark">
-    <div class="wrap contact-wrap">
-      <header class="section-head section-head-dark">
-        <p class="section-num">05</p>
-        <h2 class="section-title">Get in touch</h2>
-      </header>
-      <p class="contact-lead">Open to SAP BTP application development and consulting roles. Happy to talk through your project needs.</p>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:Vamshianasi2303@gmail.com">
-          <span class="contact-label">Email</span>
-          <span class="contact-value">Vamshianasi2303@gmail.com</span>
-        </a>
-        <a class="contact-card" href="tel:7981354543">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value">+91 79813 54543</span>
-        </a>
-        <div class="contact-card">
-          <span class="contact-label">Location</span>
-          <span class="contact-value">Hyderabad, India</span>
-        </div>
-        <div class="contact-card">
-          <span class="contact-label">Languages</span>
-          <span class="contact-value">English &middot; Hindi &middot; Telugu</span>
+          </article>
+          <article class="card reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3>Team Contribution</h3>
+            <p>Process improvement, mentoring, status reporting, and risk and dependency management across delivery teams.</p>
+            <ul class="tags">
+              <li>Mentoring</li><li>Risk mgmt</li><li>Knowledge sharing</li>
+            </ul>
+          </article>
         </div>
       </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-num">03</p>
+          <h2 class="section-title">Experience</h2>
+        </header>
+
+        <div class="timeline">
+
+          <article class="tl-item reveal">
+            <div class="tl-marker"><span class="tl-dot"></span></div>
+            <div class="tl-body">
+              <div class="tl-head">
+                <div>
+                  <h3 class="tl-title">SAP Consultant</h3>
+                  <p class="tl-org">Accenture</p>
+                </div>
+                <p class="tl-date">Aug 2022 &ndash; Present</p>
+              </div>
+              <ul class="bullets">
+                <li>Supported SAP BTP application development, designing scalable and maintainable solutions aligned to business processes and application needs.</li>
+                <li>Collaborated with multiple teams and stakeholders on technical decisions, issue resolution, and alignment on project goals and deliverables.</li>
+                <li>Provided solutions for immediate and cross-team technical challenges, including troubleshooting complex SAP BTP application issues.</li>
+                <li>Contributed to application lifecycle management and deployment activities within the SAP BTP environment.</li>
+                <li>Led process-improvement efforts, coordinated team decisions, and mentored junior team members to strengthen delivery capability.</li>
+                <li>Analyzed business requirements and collaborated with stakeholders to translate them into application configuration and development requirements.</li>
+                <li>Participated in solution design discussions, effort planning, and delivery tracking to support timely completion of assigned work items.</li>
+                <li>Supported functional and technical testing, issue analysis, defect resolution, and deployment readiness across application releases.</li>
+                <li>Prepared and maintained project documentation, including requirement notes, solution details, test evidence, and status updates.</li>
+                <li>Worked with cross-functional teams to identify dependencies, communicate risks, and improve quality and reliability of delivered applications.</li>
+                <li>Provided post-deployment support by investigating production issues and coordinating timely resolution with relevant teams.</li>
+                <li>Participated in daily team meetings, sprint planning, reviews, and retrospectives; shared progress, blockers, and next steps.</li>
+                <li>Validated application changes against agreed requirements and supported user-acceptance testing activities before release.</li>
+                <li>Maintained clear communication with project leads and stakeholders through regular status updates and timely escalation of risks or dependencies.</li>
+                <li>Assisted end users and business teams by clarifying application functionality, resolving routine queries, and sharing knowledge.</li>
+              </ul>
+              <ul class="tags">
+                <li>SAP BTP</li><li>UAT support</li><li>Mentoring</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section section-tinted">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-num">04</p>
+          <h2 class="section-title">Key Projects</h2>
+        </header>
+        <div class="cards">
+          <article class="card project-card reveal">
+            <div class="project-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>Cloud-Native App Suite</h3>
+            <p>Designed and delivered a suite of cloud-native applications on SAP BTP, focusing on maintainability and scalability across the full lifecycle.</p>
+            <ul class="tags">
+              <li>SAP BTP</li><li>Cloud Foundry</li><li>Microservices</li>
+            </ul>
+          </article>
+          <article class="card project-card reveal">
+            <div class="project-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>Enterprise Deployment Pipeline</h3>
+            <p>Built deployment automation and lifecycle management processes for SAP BTP applications, reducing release cycles and improving reliability.</p>
+            <ul class="tags">
+              <li>CI/CD</li><li>Automation</li><li>Lifecycle</li>
+            </ul>
+          </article>
+          <article class="card project-card reveal">
+            <div class="project-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Stakeholder Collaboration Platform</h3>
+            <p>Facilitated cross-functional solution design workshops, translating business requirements into technical specifications and delivery plans.</p>
+            <ul class="tags">
+              <li>Requirements</li><li>Workshops</li><li>Solution design</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-num">05</p>
+          <h2 class="section-title">Education</h2>
+        </header>
+        <div class="edu-list">
+          <article class="edu reveal">
+            <div class="edu-badge">B.Tech</div>
+            <div class="edu-body">
+              <h3>Mechanical Engineering</h3>
+              <p class="edu-org">Jyothishmathi Institute of Technology and Science, JNTUH, Karimnagar</p>
+              <p class="edu-meta">Jun 2015 &ndash; Mar 2022 &nbsp;&middot;&nbsp; 56.30%</p>
+            </div>
+          </article>
+          <article class="edu reveal">
+            <div class="edu-badge">12th</div>
+            <div class="edu-body">
+              <h3>Intermediate</h3>
+              <p class="edu-org">Alphores Junior College, Karimnagar</p>
+              <p class="edu-meta">Jun 2013 &ndash; Apr 2015 &nbsp;&middot;&nbsp; 84.6%</p>
+            </div>
+          </article>
+          <article class="edu reveal">
+            <div class="edu-badge">SSC</div>
+            <div class="edu-body">
+              <h3>Secondary School</h3>
+              <p class="edu-org">Trinity Model Secondary School, Peddapalli</p>
+              <p class="edu-meta">Jun 2012 &ndash; Apr 2013 &nbsp;&middot;&nbsp; 8.3 GPA</p>
+            </div>
+          </article>
+        </div>
+        <p class="footnote reveal">Academic documents: CMM issued 12 Jul 2022 &middot; OD issued 18 Mar 2023</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-dark">
+      <div class="wrap contact-wrap">
+        <header class="section-head section-head-dark reveal">
+          <p class="section-num">06</p>
+          <h2 class="section-title">Get in touch</h2>
+        </header>
+        <p class="contact-lead reveal">Open to SAP BTP application development and consulting roles. Happy to talk through your project needs.</p>
+        <div class="contact-grid">
+          <a class="contact-card reveal" href="mailto:Vamshianasi2303@gmail.com">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">Vamshianasi2303@gmail.com</span>
+          </a>
+          <a class="contact-card reveal" href="tel:7981354543">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">+91 79813 54543</span>
+          </a>
+          <div class="contact-card reveal">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Hyderabad, India</span>
+          </div>
+          <div class="contact-card reveal">
+            <span class="contact-label">Languages</span>
+            <span class="contact-value">English &middot; Hindi &middot; Telugu</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>&copy; 2026 Anasi Vamshi</p>
+      <a href="#home" class="to-top">Back to top &uarr;</a>
     </div>
-  </section>
+  </footer>
 
-</main>
-
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <p>&copy; 2026 Anasi Vamshi</p>
-    <a href="#home" class="to-top">Back to top &uarr;</a>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
