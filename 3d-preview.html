@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anasi Vamshi — 3D Portfolio View</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, 'Segoe UI', Arial, sans-serif;
+      background: #050a14;
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+      perspective: 1200px;
+      perspective-origin: 50% 45%;
+    }
+
+    /* ---------- 3D Scene ---------- */
+    .scene {
+      position: fixed;
+      inset: 0;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* ---------- Grid floor ---------- */
+    .grid-floor {
+      position: fixed;
+      bottom: -10%;
+      left: -50%;
+      width: 200%;
+      height: 60%;
+      background-image:
+        linear-gradient(rgba(10, 110, 209, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 110, 209, 0.15) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: rotateX(75deg);
+      transform-origin: center top;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 30%, #000 70%, transparent 100%);
+      animation: grid-scroll 20s linear infinite;
+    }
+    @keyframes grid-scroll {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 60px; }
+    }
+
+    /* ---------- Floating orbs ---------- */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: orb-float 12s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: rgba(10, 110, 209, 0.2);
+      top: -10%; left: -5%;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: rgba(34, 197, 94, 0.1);
+      bottom: 5%; right: -5%;
+      animation-delay: -4s;
+    }
+    .orb-3 {
+      width: 300px; height: 300px;
+      background: rgba(10, 110, 209, 0.12);
+      top: 40%; right: 20%;
+      animation-delay: -8s;
+    }
+    @keyframes orb-float {
+      0%, 100% { transform: translateZ(0) scale(1); }
+      50% { transform: translateZ(40px) scale(1.08); }
+    }
+
+    /* ---------- 3D Portfolio Card ---------- */
+    .portfolio-3d {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: min(900px, 85vw);
+      transform: translate(-50%, -50%) rotateX(8deg) rotateY(-12deg);
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease-out;
+    }
+
+    /* ---------- Screen frame ---------- */
+    .screen-frame {
+      background: linear-gradient(145deg, #0a2540, #0f2d4d);
+      border: 1px solid rgba(10, 110, 209, 0.3);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow:
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(10, 110, 209, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .screen-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(10, 110, 209, 0.5), transparent);
+    }
+
+    /* ---------- Depth layers ---------- */
+    .layer {
+      position: absolute;
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    .layer-1 {
+      top: -20px; left: -20px; right: -20px; bottom: -20px;
+      background: rgba(10, 110, 209, 0.03);
+      border: 1px solid rgba(10, 110, 209, 0.1);
+      transform: translateZ(-30px);
+    }
+    .layer-2 {
+      top: -40px; left: -40px; right: -40px; bottom: -40px;
+      background: rgba(10, 110, 209, 0.015);
+      border: 1px solid rgba(10, 110, 209, 0.05);
+      transform: translateZ(-60px);
+    }
+
+    /* ---------- Content inside 3D card ---------- */
+    .content-3d {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-3d {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(10, 110, 209, 0.2);
+    }
+    .avatar-3d {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid rgba(10, 110, 209, 0.4);
+      box-shadow: 0 0 20px rgba(10, 110, 209, 0.3);
+      object-fit: cover;
+    }
+    .header-text h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(180deg, #fff 60%, #7db8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-text p {
+      color: #6da8e8;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- Floating info cards ---------- */
+    .float-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .float-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(10, 110, 209, 0.15);
+      border-radius: 12px;
+      padding: 18px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .float-card:hover {
+      transform: translateZ(20px);
+      box-shadow: 0 10px 30px rgba(10, 110, 209, 0.2);
+    }
+    .float-card .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #4da3e8;
+    }
+    .float-card .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #6a80a0;
+      margin-top: 4px;
+    }
+
+    /* ---------- Skill bars in 3D ---------- */
+    .skills-3d {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .skill-3d {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(10, 110, 209, 0.1);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .skill-3d .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .skill-3d .skill-name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #a0b8d8;
+    }
+    .skill-3d .skill-pct {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #4da3e8;
+    }
+    .skill-3d .skill-track {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-3d .skill-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0a6ed1, #4da3e8);
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ---------- Experience preview ---------- */
+    .exp-3d {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(10, 110, 209, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .exp-3d h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #4da3e8;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .exp-3d .exp-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .exp-3d .exp-org {
+      font-size: 0.8rem;
+      color: #6da8e8;
+      margin-top: 2px;
+    }
+    .exp-3d .exp-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #6a80a0;
+      margin-top: 6px;
+    }
+
+    /* ---------- Floating particles ---------- */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: rgba(10, 110, 209, 0.6);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particle-float 8s ease-in-out infinite;
+    }
+    .particle:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: -2s; }
+    .particle:nth-child(3) { top: 30%; left: 70%; animation-delay: -4s; }
+    .particle:nth-child(4) { top: 70%; left: 25%; animation-delay: -6s; }
+    .particle:nth-child(5) { top: 15%; left: 50%; animation-delay: -1s; }
+    .particle:nth-child(6) { top: 80%; left: 60%; animation-delay: -3s; }
+    @keyframes particle-float {
+      0%, 100% { transform: translateZ(0) scale(1); opacity: 0.4; }
+      50% { transform: translateZ(60px) scale(1.5); opacity: 1; }
+    }
+
+    /* ---------- Controls hint ---------- */
+    .hint {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #4a6080;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      animation: hint-pulse 3s ease-in-out infinite;
+    }
+    @keyframes hint-pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    .hint span {
+      color: #4da3e8;
+    }
+
+    /* ---------- Back button ---------- */
+    .back-btn {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #6da8e8;
+      text-decoration: none;
+      border: 1px solid rgba(10, 110, 209, 0.3);
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: rgba(10, 37, 64, 0.6);
+      backdrop-filter: blur(8px);
+      transition: all 0.2s ease;
+      z-index: 100;
+    }
+    .back-btn:hover {
+      background: rgba(10, 110, 209, 0.15);
+      border-color: rgba(10, 110, 209, 0.5);
+      color: #fff;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 700px) {
+      .portfolio-3d {
+        transform: translate(-50%, -50%) rotateX(4deg) rotateY(-6deg);
+        width: 92vw;
+      }
+      .screen-frame { padding: 24px; }
+      .float-cards { grid-template-columns: 1fr; }
+      .skills-3d { grid-template-columns: 1fr; }
+      .header-text h1 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">&larr; Back to Portfolio</a>
+
+  <!-- Background elements -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="grid-floor"></div>
+
+  <!-- Floating particles -->
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+
+  <!-- 3D Scene -->
+  <div class="scene" id="scene">
+    <div class="portfolio-3d" id="portfolio3d">
+      <div class="layer layer-2"></div>
+      <div class="layer layer-1"></div>
+
+      <div class="screen-frame">
+        <div class="content-3d">
+
+          <div class="header-3d">
+            <img class="avatar-3d" src="photo.svg" alt="Anasi Vamshi">
+            <div class="header-text">
+              <h1>Anasi Vamshi</h1>
+              <p>SAP BTP Application Development | SAP Consultant</p>
+            </div>
+          </div>
+
+          <div class="float-cards">
+            <div class="float-card">
+              <div class="num">4+</div>
+              <div class="label">Years Experience</div>
+            </div>
+            <div class="float-card">
+              <div class="num">SAP</div>
+              <div class="label">BTP Focused</div>
+            </div>
+            <div class="float-card">
+              <div class="num">3</div>
+              <div class="label">Languages</div>
+            </div>
+          </div>
+
+          <div class="skills-3d">
+            <div class="skill-3d">
+              <div class="skill-header">
+                <span class="skill-name">SAP BTP &amp; Development</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" data-level="90"></div></div>
+            </div>
+            <div class="skill-3d">
+              <div class="skill-header">
+                <span class="skill-name">Cloud Delivery</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
+            </div>
+            <div class="skill-3d">
+              <div class="skill-header">
+                <span class="skill-name">Consulting</span>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" data-level="80"></div></div>
+            </div>
+            <div class="skill-3d">
+              <div class="skill-header">
+                <span class="skill-name">Team Contribution</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-track"><div class="skill-fill" data-level="85"></div></div>
+            </div>
+          </div>
+
+          <div class="exp-3d">
+            <h3>Current Role</h3>
+            <div class="exp-title">SAP Consultant</div>
+            <div class="exp-org">Accenture</div>
+            <div class="exp-date">Aug 2022 &ndash; Present</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">Move your mouse to <span>explore in 3D</span></div>
+
+  <script>
+    // Mouse-tracking 3D parallax
+    const scene = document.getElementById('scene');
+    const portfolio = document.getElementById('portfolio3d');
+    const layers = document.querySelectorAll('.layer');
+    const floatCards = document.querySelectorAll('.float-card');
+    const particles = document.querySelectorAll('.particle');
+
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    function animate() {
+      // Smooth interpolation
+      currentX += (mouseX - currentX) * 0.05;
+      currentY += (mouseY - currentY) * 0.05;
+
+      // Rotate scene based on mouse
+      const rotateY = currentX * 15;
+      const rotateX = -currentY * 10;
+
+      portfolio.style.transform = `translate(-50%, -50%) rotateX(${8 + rotateX}deg) rotateY(${-12 + rotateY}deg)`;
+
+      // Parallax depth layers
+      layers[0].style.transform = `translateZ(-30px) translateX(${currentX * 10}px) translateY(${currentY * 10}px)`;
+      layers[1].style.transform = `translateZ(-60px) translateX(${currentX * 20}px) translateY(${currentY * 20}px)`;
+
+      // Float cards parallax
+      floatCards.forEach((card, i) => {
+        const depth = (i + 1) * 5;
+        card.style.transform = `translateZ(${depth}px) translateX(${currentX * depth * 0.5}px) translateY(${currentY * depth * 0.5}px)`;
+      });
+
+      // Particles parallax
+      particles.forEach((p, i) => {
+        const depth = (i + 1) * 15;
+        p.style.transform = `translateZ(${depth}px) translateX(${currentX * depth}px) translateY(${currentY * depth}px)`;
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Animate skill bars on load
+    setTimeout(() => {
+      document.querySelectorAll('.skill-fill').forEach(bar => {
+        bar.style.width = bar.dataset.level + '%';
+      });
+    }, 500);
+  </script>
+</body>
+</html>

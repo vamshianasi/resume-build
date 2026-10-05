@@ -104,4 +104,25 @@
       el.classList.add('visible');
     });
   }
+
+  // --- Skill bar animation ---
+  var skillBars = document.querySelectorAll('.skill-bar-fill');
+  if (skillBars.length && 'IntersectionObserver' in window) {
+    var barObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(function (bar) {
+      barObserver.observe(bar);
+    });
+  } else {
+    skillBars.forEach(function (bar) {
+      bar.classList.add('animate');
+    });
+  }
 })();

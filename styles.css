@@ -872,6 +872,81 @@ a.contact-card:hover {
   transform: translateY(0);
 }
 
+/* ---------- Skill bar animation ---------- */
+.skill-bar {
+  height: 4px;
+  background: #dde6f0;
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), #4da3e8);
+  border-radius: 2px;
+  width: 0;
+  transition: width 1s var(--ease);
+}
+.skill-bar-fill.animate {
+  width: var(--level, 80%);
+}
+
+/* ---------- Card stagger animation ---------- */
+.cards .reveal:nth-child(1) { transition-delay: 0ms; }
+.cards .reveal:nth-child(2) { transition-delay: 80ms; }
+.cards .reveal:nth-child(3) { transition-delay: 160ms; }
+.cards .reveal:nth-child(4) { transition-delay: 240ms; }
+
+/* ---------- Timeline progress indicator ---------- */
+.tl-item::after {
+  content: '';
+  position: absolute;
+  left: -36px;
+  top: 28px;
+  bottom: -8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  opacity: 0.3;
+}
+.tl-item:last-child::after { display: none; }
+
+/* ---------- Glassmorphism on stat cards ---------- */
+@supports (backdrop-filter: blur(8px)) {
+  .stat {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* ---------- Smooth anchor offset for sticky header ---------- */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ---------- Selection color ---------- */
+::selection {
+  background: rgba(10, 110, 209, 0.2);
+  color: var(--ink);
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--tint); }
+::-webkit-scrollbar-thumb {
+  background: #b0c4d8;
+  border-radius: 5px;
+  border: 2px solid var(--tint);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* ---------- Print: hide decorative elements ---------- */
+@media print {
+  .hero-orb, .hero-glow, .hero-grid, .hero-badge-ring { display: none; }
+  .eyebrow { border: 1px solid #ccc; color: #333; }
+  .dot { display: none; }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .about-layout {
