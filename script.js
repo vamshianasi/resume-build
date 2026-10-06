@@ -32,7 +32,6 @@
   // --- Topbar scroll effect ---
   var topbar = document.getElementById('topbar');
   if (topbar) {
-    var lastScroll = 0;
     window.addEventListener('scroll', function () {
       var y = window.scrollY;
       if (y > 10) {
@@ -40,7 +39,6 @@
       } else {
         topbar.classList.remove('scrolled');
       }
-      lastScroll = y;
     }, { passive: true });
   }
 
@@ -105,24 +103,58 @@
     });
   }
 
-  // --- Skill bar animation ---
-  var skillBars = document.querySelectorAll('.skill-bar-fill');
-  if (skillBars.length && 'IntersectionObserver' in window) {
-    var barObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate');
-          barObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+  // --- Smooth scroll for anchor links ---
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener('click', function (e) {
+      var targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      var target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
 
-    skillBars.forEach(function (bar) {
-      barObserver.observe(bar);
+  // --- 3D tilt effect on cards ---
+  var tiltCards = document.querySelectorAll('.tilt-card');
+  var maxTilt = 8;
+
+  tiltCards.forEach(function (card) {
+    card.addEventListener('mouseenter', function () {
+      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.3s ease';
     });
-  } else {
-    skillBars.forEach(function (bar) {
-      bar.classList.add('animate');
+
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      var y = e.clientY - rect.top;
+      var centerX = rect.width / 2;
+      var centerY = rect.height / 2;
+      var rotateX = ((y - centerY) / centerY) * -maxTilt;
+      var rotateY = ((x - centerX) / centerX) * maxTilt;
+      card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
     });
+
+    card.addEventListener('mouseleave', function () {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+    });
+  });
+
+  // --- Parallax effect on hero orbs ---
+  var orbs = document.querySelectorAll('.hero-orb');
+  if (orbs.length && 'IntersectionObserver' in window) {
+    var heroSection = document.querySelector('.hero');
+    if (heroSection) {
+      window.addEventListener('scroll', function () {
+        var scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+          orbs.forEach(function (orb, i) {
+            var speed = 0.15 + (i * 0.05);
+            orb.style.transform = 'translateY(' + (scrolled * speed) + 'px)';
+          });
+        }
+      }, { passive: true });
+    }
   }
 })();
